@@ -311,7 +311,7 @@ button:disabled {
 </section>
 <section id="result" class="card result">
 <h2>Examen enviado correctamente</h2>
-<p>Tu resultado fue registrado.</p>
+<p>Tus respuestas se guardaron correctamente.</p>
 <div class="score" id="scoreText">
 </div>
 <p id="resultDetail">
@@ -336,10 +336,10 @@ const questions = [
     [
         "¿Cómo se les llama comercialmente a las propiedades que el banco saca a la venta a un precio reducido?",
         [
-            "A) Derechos adjudicatarios.",
+            "A) Propiedades adjudicadas, aunque aún estén en juicio.",
             "B) Remates bancarios.",
-            "C) Derechos de crédito.",
-            "D) Garantías de crédito."
+            "C) Propiedades hipotecadas, sin importar quién las comercializa.",
+            "D) Propiedades recuperadas, solamente cuando ya se entregó la posesión."
         ],
         "B"
     ],
@@ -348,10 +348,10 @@ const questions = [
     [
         "¿Con qué tipo de recursos debe contar principalmente el cliente para adquirir este tipo de oportunidades?",
         [
-            "A) Recursos propios al inicio y un crédito hipotecario para completar el pago.",
-            "B) Un crédito hipotecario para cubrir la adquisición.",
+            "A) Un crédito hipotecario aprobado para pagar al cedente.",
+            "B) Un crédito Infonavit combinado con un anticipo propio.",
             "C) Recursos propios.",
-            "D) Recursos propios combinados con un crédito Infonavit."
+            "D) Un préstamo respaldado por el inmueble que se pretende adquirir."
         ],
         "C"
     ],
@@ -360,10 +360,10 @@ const questions = [
     [
         "¿Qué significa que exista una sentencia firme?",
         [
-            "A) Que el juez ya dictó sentencia, pero el deudor todavía puede solicitar que se revise mediante los recursos ordinarios.",
-            "B) Que la sentencia ya fue notificada, pero aún puede modificarse mediante un recurso ordinario.",
+            "A) Que ya se presentó la sentencia, aunque todavía pueda recurrirse.",
+            "B) Que el acreedor ya obtuvo la posesión física del inmueble.",
             "C) Que la resolución ya no admite los recursos ordinarios correspondientes.",
-            "D) Que ya se solicitó ejecutarla, pero todavía se encuentra en revisión mediante un recurso ordinario."
+            "D) Que se dictó la adjudicación y concluyó la escrituración."
         ],
         "C"
     ],
@@ -373,9 +373,9 @@ const questions = [
         "¿Por qué una propiedad de recuperación bancaria puede ofrecerse por debajo de un valor comercial tradicional?",
         [
             "A) Por la etapa jurídica, el tiempo de espera y los procedimientos pendientes.",
-            "B) Porque está en una zona poco solicitada y el banco no quiere conservarla en su inventario.",
-            "C) Porque el juicio resulta muy costoso.",
-            "D) Porque la etapa jurídica ya está muy avanzada."
+            "B) Porque el descuento depende únicamente del estado físico que se observa desde fuera.",
+            "C) Porque el valor publicado ya descuenta todos los gastos futuros del comprador.",
+            "D) Porque la adjudicación obliga a vender siempre a un porcentaje fijo del avalúo."
         ],
         "A"
     ],
@@ -384,10 +384,10 @@ const questions = [
     [
         "En la mayoría de estas operaciones, ¿cómo puede revisarse físicamente la propiedad antes de avanzar?",
         [
-            "A) Por fuera y por dentro una vez que el cliente elige el inmueble.",
+            "A) Por dentro si el activo ya tiene sentencia, aunque siga ocupado.",
             "B) Principalmente por fuera.",
-            "C) Por fuera y por dentro sin necesidad de una autorización adicional.",
-            "D) Por fuera y, después de firmar un documento, también por dentro."
+            "C) Por dentro siempre que el prospecto presente una oferta formal.",
+            "D) Mediante una visita interior organizada por el asesor antes del dictamen."
         ],
         "B"
     ],
@@ -396,10 +396,10 @@ const questions = [
     [
         "Dentro de un procedimiento judicial, ¿qué es el emplazamiento?",
         [
-            "A) La presentación formal de la demanda ante el juzgado.",
+            "A) La presentación de pruebas por la parte demandada ante el juzgado.",
             "B) La notificación legal al demandado.",
-            "C) La notificación de la sentencia a las partes.",
-            "D) La notificación de la adjudicación al comprador."
+            "C) La notificación al acreedor de que se ha dictado una sentencia.",
+            "D) La comunicación al adjudicatario de que puede ocupar el inmueble."
         ],
         "B"
     ],
@@ -409,9 +409,9 @@ const questions = [
         "¿Por qué es importante saber si el cliente busca una propiedad para vivir o para invertir?",
         [
             "A) Porque permite perfilar mejor las opciones; para inversión puede considerar más zonas y para vivir normalmente busca ubicaciones específicas.",
-            "B) Porque quien busca invertir debe elegir una etapa jurídica temprana y quien busca vivir debe elegir una propiedad adjudicada.",
-            "C) Porque para inversión basta conocer el descuento, mientras que para vivir basta conocer la ubicación.",
-            "D) Porque el uso que dará al inmueble determina automáticamente el plazo de recuperación."
+            "B) Porque el destino define automáticamente la etapa jurídica que puede comprar.",
+            "C) Porque para habitar conviene prometer una fecha de entrega más corta.",
+            "D) Porque quien invierte no necesita revisar ubicación ni presupuesto."
         ],
         "A"
     ],
@@ -420,10 +420,10 @@ const questions = [
     [
         "Una vez realizado el traslado de derechos, ¿quién continúa con los trámites de recuperación de la propiedad?",
         [
-            "A) El banco que transmitió los derechos.",
-            "B) La comercializadora durante las dos asesorías de seguimiento.",
+            "A) El banco, que conserva la representación judicial hasta la entrega de llaves.",
+            "B) La comercializadora, que dirige el juicio hasta obtener la posesión.",
             "C) El cliente y el abogado elegido por él.",
-            "D) El asesor comercial junto con el abogado del banco."
+            "D) El asesor, con apoyo del notario que formalizó el traslado."
         ],
         "C"
     ],
@@ -432,10 +432,10 @@ const questions = [
     [
         "Si un cliente pregunta exactamente cuánto tardará una operación, ¿qué debe explicarse?",
         [
-            "A) Que depende de la etapa jurídica indicada en el catálogo y que con ella puede fijarse una fecha de entrega.",
+            "A) Que el plazo publicado en el catálogo es una fecha contractual de entrega.",
             "B) Que depende de la etapa jurídica, los procedimientos pendientes y de cómo continúe el proceso su abogado.",
-            "C) Que depende del expediente hasta el traslado, pero después el tiempo de recuperación es igual para todos los casos.",
-            "D) Que depende principalmente de cuándo se acepte la oferta; a partir de ahí puede calcularse la fecha de posesión."
+            "C) Que basta conocer la etapa jurídica para fijar el día exacto de posesión.",
+            "D) Que el plazo comienza al pagar, independientemente del expediente."
         ],
         "B"
     ],
@@ -445,9 +445,9 @@ const questions = [
         "¿Qué puede ocurrir si no se localiza al demandado para realizar el emplazamiento?",
         [
             "A) Pueden generarse demoras mientras se realizan búsquedas u otras formas legales de notificación.",
-            "B) No pasa nada; el juez permite que el procedimiento avance sin localizar ni notificar al demandado.",
-            "C) Puede notificarse al demandado mediante la publicación comercial de la propiedad.",
-            "D) Puede omitirse el emplazamiento si el banco ya cuenta con una dirección anterior del demandado."
+            "B) El plazo para dictar sentencia sigue igual sin necesidad de notificación.",
+            "C) La falta de localización permite adjudicar de inmediato el inmueble.",
+            "D) El cliente puede sustituir la notificación mediante una carta al banco."
         ],
         "A"
     ],
@@ -456,10 +456,10 @@ const questions = [
     [
         "¿Qué puede adquirir un cliente dependiendo de la etapa jurídica de la operación?",
         [
-            "A) Derechos de cobro o derechos litigiosos en cualquier etapa, incluso si el activo ya se ofrece como propiedad.",
+            "A) Siempre la escritura del inmueble, aunque el expediente siga en juicio.",
             "B) Derechos de cobro, derechos litigiosos, derechos adjudicatarios o, según el caso, una propiedad en regularización o propiedad.",
-            "C) Derechos adjudicatarios o una propiedad en cualquier etapa, incluso si todavía se transmite un crédito.",
-            "D) Derechos de cobro junto con la posesión material del inmueble en cualquier etapa."
+            "C) Los derechos de posesión inmediata, cualquiera que sea la etapa.",
+            "D) Únicamente el crédito original; la adjudicación nunca se transmite."
         ],
         "B"
     ],
@@ -468,10 +468,10 @@ const questions = [
     [
         "¿Cuál es la finalidad práctica del dictamen dentro de la operación?",
         [
-            "A) Verificar si el precio de la ficha coincide con el avalúo.",
+            "A) Calcular un precio final sin analizar las condiciones jurídicas.",
             "B) Verificar si  la propiedad es viables para continuar.",
-            "C) Verificar si el inmueble ya puede entregarse en una fecha determinada.",
-            "D) Verificar únicamente si existe sentencia firme para aprobar la operación."
+            "C) Confirmar una fecha exacta para recuperar la posesión.",
+            "D) Reemplazar la revisión documental que hará el abogado del cliente."
         ],
         "B"
     ],
@@ -481,9 +481,9 @@ const questions = [
         "¿Qué sucede en la etapa de pruebas de un juicio?",
         [
             "A) Se presentan y desahogan los elementos probatorios correspondientes al procedimiento.",
-            "B) Se presentan los elementos probatorios, pero se desahogan únicamente después de la sentencia.",
-            "C) Se desahogan las pruebas solo para determinar el precio comercial del inmueble.",
-            "D) Se presentan las pruebas al banco para que decida si acepta la oferta del comprador."
+            "B) Se revisa exclusivamente el precio de mercado de la propiedad.",
+            "C) Se ejecuta la sentencia y se desocupa el inmueble.",
+            "D) Se formaliza la transmisión de derechos ante el banco."
         ],
         "A"
     ],
@@ -492,10 +492,10 @@ const questions = [
     [
         "Si un cliente pregunta “¿qué estoy comprando exactamente?”, ¿cuál es la respuesta adecuada?",
         [
-            "A) Depende de la etapa, pero siempre compra derechos de cobro o litigiosos, aun si el activo se ofrece como propiedad.",
+            "A) Que adquiere la propiedad con posesión en cualquier modalidad.",
             "B) Depende de la etapa: pueden ser derechos litigiosos, derechos de cobro, derechos adjudicatarios o, según el caso, una propiedad.",
-            "C) Depende de la etapa: los derechos adjudicatarios ya incluyen la posesión física desde el traslado.",
-            "D) Depende de la etapa: la propiedad solo puede transmitirse cuando el cliente ya recuperó la posesión."
+            "C) Que siempre compra solo la deuda, incluso si el activo ya está adjudicado.",
+            "D) Que adquiere el derecho a ocuparla desde la firma de la oferta."
         ],
         "B"
     ],
@@ -504,10 +504,10 @@ const questions = [
     [
         "Antes de que un cliente avance con una propiedad, ¿qué información debe revisarse?",
         [
-            "A) La etapa jurídica y el precio; los documentos del activo se revisan después de presentar la oferta.",
+            "A) Solo el precio y la fecha estimada publicada en el catálogo.",
             "B) La información disponible sobre la situación jurídica, precio,dirección, documentos y condiciones específicas.",
-            "C) Los documentos generales de la cartera, sin necesidad de confirmar todavía los datos del inmueble elegido.",
-            "D) La dirección, las fotografías y el precio; las condiciones particulares se revisan al firmar."
+            "C) Solo el estatus judicial, porque las condiciones se revisan después del pago.",
+            "D) El estado exterior y la zona; los documentos se revisan tras firmar."
         ],
         "B"
     ],
@@ -516,10 +516,10 @@ const questions = [
     [
         "¿Cuál es el origen habitual de muchas propiedades de recuperación bancaria?",
         [
-            "A) El banco inicia la recuperación cuando el deudor activa su seguro de desempleo.",
+            "A) La adjudicación ocurre antes de que exista un crédito impagado.",
             "B) Un crédito deja de pagarse y el acreedor inicia el proceso correspondiente para recuperar lo adeudado.",
-            "C) El banco inicia la recuperación cuando observa que la casa está deteriorada.",
-            "D) El crédito se cancela al primer atraso y el inmueble pasa directamente a venta."
+            "C) La propiedad se comercializa porque vence automáticamente la hipoteca.",
+            "D) El inmueble pasa al banco al primer atraso sin procedimiento adicional."
         ],
         "B"
     ],
@@ -528,10 +528,10 @@ const questions = [
     [
         "Si el cliente pregunta por gravámenes, consecuencias jurídicas o interpretación legal de documentos, ¿qué debe hacer el asesor?",
         [
-            "A) Responder con base en lo que ocurrió en otra propiedad similar.",
-            "B) Contestar con base en su experiencia como asesor.",
+            "A) Interpretar el documento con base en otras operaciones semejantes.",
+            "B) Pedir al banco una respuesta verbal y transmitirla como conclusión jurídica.",
             "C) Canalizar la consulta al área jurídica.",
-            "D) Dar su interpretación y solicitar una revisión jurídica solo si el cliente no está de acuerdo."
+            "D) Explicar que todo gravamen queda cancelado al presentar una oferta."
         ],
         "C"
     ],
@@ -541,9 +541,9 @@ const questions = [
         "En un crédito hipotecario, ¿qué función tiene originalmente el inmueble?",
         [
             "A) Sirve como garantía del crédito.",
-            "B) Sirve como pago anticipado del crédito.",
-            "C) Sirve como propiedad del banco desde la firma.",
-            "D) Sirve como autorización para ocuparlo."
+            "B) Es la forma de pago utilizada por el comprador del remate.",
+            "C) Concede al acreditado posesión definitiva aun si deja de pagar.",
+            "D) Reemplaza la obligación de pago cuando el inmueble se adjudica."
         ],
         "A"
     ],
@@ -553,9 +553,9 @@ const questions = [
         "¿Por qué una etapa jurídica más temprana puede representar un mayor descuento?",
         [
             "A) Porque pueden quedar más tiempo de espera y procedimientos pendientes.",
-            "B) Porque ya concluyeron las actuaciones más costosas del procedimiento.",
-            "C) Porque en esa etapa ya se conoce la fecha exacta de posesión.",
-            "D) Porque el inmueble lleva más tiempo publicado en el catálogo."
+            "B) Porque una etapa temprana asegura que el inmueble está desocupado.",
+            "C) Porque el descuento sustituye automáticamente los gastos jurídicos.",
+            "D) Porque el precio disminuye solo por el tiempo de publicación del anuncio."
         ],
         "A"
     ],
@@ -564,10 +564,10 @@ const questions = [
     [
         "¿Cuál es normalmente el primer paso de la ruta judicial de recuperación?",
         [
-            "A) Emplazamiento.",
+            "A) La adjudicación de la propiedad antes de cualquier reclamación.",
             "B) Demanda.",
-            "C) Pruebas.",
-            "D) Sentencia."
+            "C) La etapa de pruebas, seguida de la notificación al demandado.",
+            "D) La solicitud de posesión por parte del comprador."
         ],
         "B"
     ],
@@ -576,10 +576,10 @@ const questions = [
     [
         "Si un cliente necesita mudarse inmediatamente, ¿qué debe explicársele sobre estas operaciones?",
         [
-            "A) Que no son de entrega inmediata, pero con sentencia firme puede comprometerse una fecha de mudanza desde el pago.",
+            "A) Que si ya hay sentencia la mudanza puede programarse al pagar.",
             "B) Que no son operaciones de entrega inmediata; en algunos casos se manejan referencias aproximadas de 6 a 14 meses, pero el tiempo real depende del expediente y del proceso.",
-            "C) Que no son de entrega inmediata, pero el plazo estimado en el catálogo se vuelve obligatorio cuando aceptan la oferta.",
-            "D) Que no son de entrega inmediata y que la referencia de 6 a 14 meses se cumple igual en todos los expedientes."
+            "C) Que la oferta firmada permite ocupar el inmueble de inmediato.",
+            "D) Que el plazo estimado en el catálogo equivale a entrega garantizada."
         ],
         "B"
     ],
@@ -588,10 +588,10 @@ const questions = [
     [
         "¿Qué representan los derechos de crédito?",
         [
-            "A) Derechos relacionados con la posesión de un inmueble.",
+            "A) El derecho a recibir físicamente el inmueble al pagar.",
             "B) Derechos relacionados con el cobro de una deuda.",
-            "C) Derechos relacionados con la propiedad ya adjudicada.",
-            "D) Derechos relacionados con la entrega física del inmueble."
+            "C) La propiedad plena del inmueble sin transmisión adicional.",
+            "D) La facultad de escriturar sin revisar el estado del juicio."
         ],
         "B"
     ],
@@ -600,10 +600,10 @@ const questions = [
     [
         "¿Qué puntos deben aclararse desde el inicio al prospecto?",
         [
-            "A) Que se revisa por fuera y requiere recursos propios, pero la fecha de entrega se confirma al presentar la oferta.",
+            "A) Que se podrá ingresar si el banco ya fijó un precio.",
             "B) Que normalmente se revisa por fuera, no es una entrega inmediata y la operación requiere recursos propios.",
-            "C) Que no se entrega de inmediato y requiere recursos propios, pero puede revisarse por dentro cuando exista dictamen.",
-            "D) Que se revisa por fuera y no se entrega de inmediato, pero puede pagarse con una hipoteca sobre ese mismo inmueble."
+            "C) Que el descuento implica entrega más rápida que una compra tradicional.",
+            "D) Que basta apartar el activo para solicitar el financiamiento hipotecario."
         ],
         "B"
     ],
@@ -612,10 +612,10 @@ const questions = [
     [
         "¿Qué significa la ejecución de una sentencia?",
         [
-            "A) Dictar la resolución judicial que establece lo que deberá cumplirse.",
-            "B) Declarar que la sentencia ya no admite recursos ordinarios.",
+            "A) La revisión de los documentos antes de presentar la demanda.",
+            "B) El pronunciamiento del juez que todavía puede recurrirse.",
             "C) Llevar a efecto lo ordenado en la resolución judicial.",
-            "D) Transmitir al comprador los derechos relacionados con el juicio."
+            "D) La firma del contrato comercial para transmitir derechos."
         ],
         "C"
     ],
@@ -625,9 +625,9 @@ const questions = [
         "¿Cuál es la diferencia principal entre una sentencia y una sentencia firme?",
         [
             "A) La sentencia es una resolución del juez; la sentencia firme ya no admite los recursos ordinarios correspondientes.",
-            "B) La sentencia es una resolución del juez; la sentencia firme es la que ya fue notificada, aunque todavía pueda recurrirse.",
-            "C) La sentencia es una resolución del juez; la sentencia firme significa que se obtiene posesión inmediata.",
-            "D) La sentencia es una resolución del juez; la sentencia firme es la que ya produjo la escritura a nombre del comprador."
+            "B) La sentencia firme es la primera resolución; la sentencia se dicta al final.",
+            "C) La firmeza implica por sí sola adjudicación y posesión física.",
+            "D) Ambas expresiones indican únicamente que se presentó la demanda."
         ],
         "A"
     ],
@@ -636,10 +636,10 @@ const questions = [
     [
         "Cuando un cliente muestra interés real en una propiedad, ¿cuál es el siguiente paso antes de formalizar la operación?",
         [
-            "A) Presentar la oferta y elaborar el dictamen después de recibir la respuesta del banco.",
+            "A) Presentar una oferta sin revisar el expediente para reservar el precio.",
             "B) Revisar la información disponible y elaborar el dictamen correspondiente.",
-            "C) Solicitar un pago para separar el activo y revisar después su información.",
-            "D) Programar una visita interior y elaborar el dictamen después de verla."
+            "C) Solicitar la posesión y luego verificar la documentación.",
+            "D) Firmar primero una escritura y después confirmar las condiciones."
         ],
         "B"
     ],
@@ -648,10 +648,10 @@ const questions = [
     [
         "¿Qué son los derechos litigiosos?",
         [
-            "A) Derechos vinculados a una deuda antes de iniciar cualquier procedimiento judicial.",
+            "A) Derechos de propiedad inscritos, aunque aún no exista juicio.",
             "B) Derechos vinculados a un procedimiento judicial existente.",
-            "C) Derechos vinculados únicamente a un inmueble cuyo adeudo ya fue liquidado.",
-            "D) Derechos vinculados a la posesión física después de concluir el juicio."
+            "C) Derechos de cobro que siempre incluyen posesión inmediata.",
+            "D) Derechos adjudicados una vez terminado todo procedimiento."
         ],
         "B"
     ],
@@ -660,10 +660,10 @@ const questions = [
     [
         "¿Que una propiedad se encuentre adjudicada significa que ya puede ser habitada?",
         [
-            "A) Depende únicamente de que la sentencia ya sea firme.",
+            "A) Sí, cuando la adjudicación ya aparece publicada en un catálogo.",
             "B) No necesariamente; debe revisarse la situación de posesión específica del inmueble.",
-            "C) Depende únicamente de que el banco haya aceptado la oferta.",
-            "D) Depende únicamente de que se haya firmado el traslado de derechos."
+            "C) Sí, desde que se firma el traslado de derechos.",
+            "D) Sí, si el comprador paga con recursos propios."
         ],
         "B"
     ],
@@ -672,10 +672,10 @@ const questions = [
     [
         "¿Hasta qué momento acompaña la empresa la gestión de la operación?",
         [
-            "A) Hasta que el cliente recupere la posesión en todas las operaciones.",
-            "B) Hasta que el banco acepte la oferta, antes de formalizar el traslado.",
+            "A) Hasta que el comprador obtenga la posesión, en todas las modalidades.",
+            "B) Hasta el dictamen; el banco lleva por sí solo el resto.",
             "C) Hasta el traslado de derechos, de acuerdo con la naturaleza de la operación.",
-            "D) Hasta elaborar el dictamen, antes de presentar la oferta."
+            "D) Hasta que el cliente contrate al abogado, antes de presentar la oferta."
         ],
         "C"
     ],
@@ -685,9 +685,9 @@ const questions = [
         "¿Cuál es una diferencia importante entre una compra inmobiliaria tradicional y una operación de recuperación bancaria?",
         [
             "A) Pueden variar los tiempos de entrega, la forma de pago y lo que jurídicamente se adquiere; en recuperación pueden transmitirse derechos según la etapa.",
-            "B) Pueden variar los tiempos y lo que se adquiere; en recuperación siempre se transmiten derechos de cobro, incluso cuando se ofrece una propiedad.",
-            "C) Pueden variar la forma de pago y la entrega; en recuperación se adquiere la propiedad desde la oferta sin importar la etapa jurídica.",
-            "D) Pueden variar los tiempos y lo que se adquiere; en recuperación el precio publicado establece la fecha exacta de entrega."
+            "B) En recuperación siempre se compra solo deuda y nunca una propiedad.",
+            "C) La compra tradicional exige recursos propios y la recuperación acepta hipoteca.",
+            "D) En recuperación el precio publicado garantiza un plazo fijo de entrega."
         ],
         "A"
     ],
@@ -697,9 +697,9 @@ const questions = [
         "Además del precio de adquisición, ¿qué otros conceptos pueden existir en una operación?",
         [
             "A) Impuestos, gastos notariales, servicios, mantenimiento, predial o regularización, según corresponda.",
-            "B) Impuestos, gastos notariales y servicios; el mantenimiento y la regularización ya están incluidos en el precio.",
-            "C) Impuestos, predial y mantenimiento; en una cesión de derechos no pueden existir gastos notariales.",
-            "D) Gastos notariales, servicios y predial; cualquier regularización corresponde siempre a quien vende."
+            "B) Solo los honorarios del asesor, incluidos siempre en el precio.",
+            "C) Únicamente los gastos notariales, iguales para cualquier activo.",
+            "D) Ningún costo después de la oferta si la propiedad está adjudicada."
         ],
         "A"
     ],
@@ -708,10 +708,10 @@ const questions = [
     [
         "Si un prospecto pregunta “¿por qué está tan barata?”, ¿qué explicación corresponde?",
         [
-            "A) Porque el descuento depende únicamente del estado físico, sin importar la etapa jurídica.",
+            "A) Porque todo activo adjudicado tiene exactamente el mismo descuento.",
             "B) Porque el precio puede relacionarse con la etapa jurídica, el tiempo de espera y las condiciones específicas de la operación.",
-            "C) Porque el precio ya incluye todos los gastos y trámites que tendrá que realizar el comprador.",
-            "D) Porque un precio bajo indica que la propiedad se entregará junto con el traslado de derechos."
+            "C) Porque el precio bajo demuestra que no hay gastos posteriores.",
+            "D) Porque una rebaja siempre significa que ya se entregará desocupada."
         ],
         "B"
     ],
@@ -720,10 +720,10 @@ const questions = [
     [
         "Si una duda requiere determinar la validez jurídica de un documento, ¿qué debe hacer el asesor?",
         [
-            "A) Consultar al asesor que publicó la propiedad y transmitir su respuesta.",
-            "B) Asegurar que el documento es válido porque aparece en el inventario de la entidad.",
+            "A) Aplicar la interpretación de un expediente anterior que parezca similar.",
+            "B) Pedir al asesor que confirme su validez antes de ofrecerlo.",
             "C) Canalizarla al área jurídica.",
-            "D) Compararlo con un documento de otra operación y dar su interpretación."
+            "D) Suponer que es válido porque aparece en el catálogo."
         ],
         "C"
     ],
@@ -732,10 +732,10 @@ const questions = [
     [
         "¿Qué puede provocar que la etapa de pruebas tarde más?",
         [
-            "A) Que el banco tarde en actualizar el precio publicado de la propiedad.",
+            "A) La publicación de una nueva ficha comercial del inmueble.",
             "B) Pruebas complejas, peritajes u otras actuaciones necesarias dentro del procedimiento.",
-            "C) Que el cliente tarde en elegir entre varias propiedades del catálogo.",
-            "D) Que se negocie la oferta mientras el juicio continúa."
+            "C) El tiempo necesario para que el prospecto elija su presupuesto.",
+            "D) El cambio de asesor que presenta la propiedad."
         ],
         "B"
     ],
@@ -745,9 +745,9 @@ const questions = [
         "¿Cómo debe explicarse el modelo general al prospecto?",
         [
             "A) Como oportunidades provenientes de bancos, administradoras o titulares de derechos, que pueden encontrarse en distintas etapas y tener diferentes tiempos de recuperación.",
-            "B) Como oportunidades provenientes de bancos y administradoras que siempre transmiten una propiedad lista para escriturarse.",
-            "C) Como oportunidades que pueden estar en distintas etapas, pero que se entregan al comprador en el mismo plazo.",
-            "D) Como activos cuyo precio permite saber, sin revisar documentos, qué derechos y qué posesión recibirá el comprador."
+            "B) Como propiedades adjudicadas con posesión inmediata en cualquier cartera.",
+            "C) Como un producto uniforme cuyo plazo se conoce por el precio.",
+            "D) Como inmuebles que siempre se compran mediante la escritura definitiva."
         ],
         "A"
     ],
@@ -757,9 +757,9 @@ const questions = [
         "Una vez que el cliente decide avanzar con la compra y la operación es viable, ¿qué acción corresponde?",
         [
             "A) Presentar la oferta al banco o entidad correspondiente y dar seguimiento a la operación.",
-            "B) Solicitar el traslado de derechos antes de que el banco o la entidad revise la oferta.",
-            "C) Pedir al cliente que pague y elaborar el dictamen una vez confirmado el pago.",
-            "D) Presentar la oferta y confirmar en ese momento la fecha en que recibirá la posesión."
+            "B) Solicitar posesión antes de que la entidad acepte la oferta.",
+            "C) Prometer al cliente una fecha de desocupación al presentar la oferta.",
+            "D) Formalizar una escritura sin esperar la aceptación correspondiente."
         ],
         "A"
     ],
@@ -769,9 +769,9 @@ const questions = [
         "¿Qué información ayuda a perfilar correctamente a un prospecto?",
         [
             "A) Zona de interés, presupuesto, si busca vivir o invertir, experiencia previa, plazo esperado y disponibilidad de recursos propios.",
-            "B) Zona, presupuesto, destino y experiencia; los recursos y el plazo pueden revisarse después de ofertar.",
-            "C) Zona, presupuesto, plazo y recursos; no hace falta preguntar si busca vivir o invertir.",
-            "D) Zona, destino, experiencia y plazo; el presupuesto se conoce cuando elige una propiedad."
+            "B) Solo la zona; los recursos y el plazo se confirman después de ofertar.",
+            "C) El presupuesto y el nombre; el destino del inmueble no influye.",
+            "D) Solo el precio máximo; la etapa jurídica no afecta su decisión."
         ],
         "A"
     ],
@@ -780,10 +780,10 @@ const questions = [
     [
         "Una vez que existe sentencia firme, ¿el deudor puede impugnar el juicio mediante los recursos ordinarios correspondientes?",
         [
-            "A) No; deja de poder impugnar únicamente cuando se firma la escritura del inmueble.",
+            "A) Sí, porque toda sentencia conserva recursos ordinarios indefinidamente.",
             "B) No; una sentencia firme ya no admite los recursos ordinarios correspondientes.",
-            "C) No; una sentencia firme impide también cualquier actuación para ejecutar lo resuelto.",
-            "D) No; la posibilidad de impugnar termina cuando los derechos se trasladan al comprador."
+            "C) Sí, basta con que el inmueble aún no esté desocupado.",
+            "D) Sí, porque el traslado de derechos reinicia la etapa de impugnación."
         ],
         "B"
     ],
@@ -792,10 +792,10 @@ const questions = [
     [
         "¿Puede adquirirse un remate bancario mediante un crédito hipotecario utilizando la misma propiedad como garantía?",
         [
-            "A) No, salvo que el comprador aporte recursos propios para el anticipo y financie el resto.",
-            "B) No, salvo que la sentencia ya sea firme y exista un avalúo del inmueble.",
+            "A) Sí, si la sentencia ya es firme aunque no exista posesión.",
+            "B) Sí, si el comprador ofrece un enganche mayor al banco.",
             "C) No; para estas operaciones se requieren recursos propios.",
-            "D) No, salvo que el banco acepte esa misma propiedad como garantía al presentar la oferta."
+            "D) Sí, cuando se presenta un avalúo del mismo inmueble."
         ],
         "C"
     ],
@@ -805,9 +805,9 @@ const questions = [
         "Antes de recomendar avanzar con una operación, ¿qué debe revisarse?",
         [
             "A) La información disponible del juicio, de la propiedad y de las condiciones de la operación para valorar su viabilidad.",
-            "B) El precio, el avalúo y las fotografías; el expediente jurídico puede revisarse después del pago.",
-            "C) La etapa indicada en la ficha, sin necesidad de comprobar los documentos y condiciones del activo.",
-            "D) El estado físico exterior y el plazo estimado, sin revisar exactamente qué derecho se transmite."
+            "B) Solo la etapa indicada en la ficha; el expediente puede verse después.",
+            "C) El precio y la ubicación, sin revisar las condiciones de traslado.",
+            "D) La fotografía y el plazo estimado, que bastan para valorar viabilidad."
         ],
         "A"
     ],
@@ -816,10 +816,10 @@ const questions = [
     [
         "Dentro de la ruta judicial explicada en el curso, ¿qué etapa sigue después del emplazamiento?",
         [
-            "A) Sentencia.",
+            "A) La adjudicación inmediata, antes de presentar elementos probatorios.",
             "B) Pruebas.",
-            "C) Adjudicación.",
-            "D) Ejecución."
+            "C) La escrituración, aunque todavía no exista sentencia.",
+            "D) La posesión, sin necesidad de revisar la continuación del juicio."
         ],
         "B"
     ],
@@ -829,9 +829,9 @@ const questions = [
         "¿“Derechos de cobro”, “derechos litigiosos”, “adjudicación”, “regularizar” y “propiedad” significan exactamente lo mismo?",
         [
             "A) No; describen situaciones o etapas distintas y debe identificarse qué corresponde a cada operación.",
-            "B) No; derechos de cobro y derechos litigiosos son lo mismo, pero adjudicación y propiedad son diferentes.",
-            "C) No; adjudicación y propiedad son lo mismo, pero los derechos de cobro y litigiosos son diferentes.",
-            "D) No; todos describen una propiedad ya transmitida, aunque con distintos precios."
+            "B) Sí; solo cambia el nombre comercial utilizado en cada catálogo.",
+            "C) Sí; todos implican que el comprador ya tiene escritura y posesión.",
+            "D) Sí; son maneras de referirse a un crédito hipotecario terminado."
         ],
         "A"
     ],
@@ -841,9 +841,9 @@ const questions = [
         "Después del traslado de derechos, ¿qué seguimiento contempla la empresa?",
         [
             "A) Dos asesorías de seguimiento para revisar avances, dudas y orientación.",
-            "B) Dos asesorías antes del traslado para revisar el dictamen y la oferta.",
-            "C) Una asesoría después del traslado para revisar avances y dudas.",
-            "D) Dos asesorías después del traslado, dirigidas únicamente al abogado del cliente."
+            "B) Representación del cliente durante todo el juicio hasta la posesión.",
+            "C) Gestión ilimitada de recursos judiciales por parte del asesor.",
+            "D) Desocupación y escrituración garantizadas dentro de un plazo fijo."
         ],
         "A"
     ],
@@ -852,10 +852,10 @@ const questions = [
     [
         "Si un cliente pregunta “¿cómo sé que no es fraude?”, ¿cómo debe responder el asesor?",
         [
-            "A) Explicar que, una vez pagada una parte, el cliente podrá revisar toda la documentación para estar seguro.",
+            "A) Asegurar que el precio publicado elimina los riesgos de la operación.",
             "B) Explicando el proceso con transparencia y señalando que la documentación disponible puede revisarse antes de avanzar.",
-            "C) Aclarar que el banco es una institución seria y no cometería fraude.",
-            "D) Explicar que el dictamen demuestra que todo está en orden y ya no hace falta revisar nada más."
+            "C) Mostrar solo fotografías y solicitar el apartado antes del dictamen.",
+            "D) Decir que la adjudicación sustituye toda revisión documental."
         ],
         "B"
     ],
@@ -865,9 +865,9 @@ const questions = [
         "¿Qué relación puede existir entre la etapa jurídica y el descuento de una propiedad?",
         [
             "A) En etapas más tempranas puede existir un mayor descuento porque quedan más tiempo y procedimientos pendientes.",
-            "B) En etapas más tempranas puede existir un mayor descuento porque ya concluyeron la mayoría de los trámites.",
-            "C) En etapas más avanzadas siempre existe un mayor descuento porque la recuperación será más rápida.",
-            "D) El descuento puede variar según la etapa, pero no guarda relación con el tiempo y los trámites pendientes."
+            "B) El descuento depende únicamente de la colonia y no del procedimiento.",
+            "C) Un mayor descuento confirma que la recuperación será más rápida.",
+            "D) El precio bajo indica por sí solo que la etapa judicial terminó."
         ],
         "A"
     ],
@@ -876,10 +876,10 @@ const questions = [
     [
         "Si el cliente pregunta qué garantía tiene sobre una operación, ¿qué debe evitar el asesor?",
         [
-            "A) Explicar qué documentos están disponibles y cuáles faltan por revisar.",
+            "A) Presentar los documentos disponibles y sus condiciones verificadas.",
             "B) Inventar garantías; los pagos y formalización deben seguir las instrucciones y documentos del banco, administradora o parte correspondiente.",
-            "C) Aclarar qué condiciones todavía dependen de la etapa jurídica y del expediente.",
-            "D) Canalizar al área jurídica las dudas que necesitan interpretación legal."
+            "C) Explicar qué etapa se conoce y qué falta por confirmar.",
+            "D) Remitir a revisión jurídica las preguntas que requieren interpretación."
         ],
         "B"
     ],
@@ -888,10 +888,10 @@ const questions = [
     [
         "¿Cuál describe mejor el flujo comercial de una operación?",
         [
-            "A) Contactar → perfilar → explicar → elegir propiedad → presentar oferta → elaborar dictamen → formalizar → seguimiento.",
+            "A) Perfilar → cobrar apartado → ofrecer → revisar expediente → trasladar derechos.",
             "B) Contactar → perfilar → explicar → seleccionar propiedad → verificar → formalizar → gestionar traslado de derechos → seguimiento.",
-            "C) Contactar → perfilar → explicar → elegir propiedad → trasladar derechos → verificar → presentar oferta → seguimiento.",
-            "D) Contactar → perfilar → explicar → elegir propiedad → verificar → seguimiento posterior → ofertar → trasladar derechos."
+            "C) Elegir activo → formalizar traslado → elaborar dictamen → presentar oferta.",
+            "D) Contactar → ofrecer una fecha de posesión → cobrar → verificar documentos."
         ],
         "B"
     ],
@@ -900,10 +900,10 @@ const questions = [
     [
         "¿En qué momento el abogado elegido por el cliente continúa con el proceso de recuperación de la propiedad?",
         [
-            "A) Después de elaborar el dictamen, aunque el cliente todavía no haya presentado una oferta.",
-            "B) Cuando el banco acepta la oferta, aunque todavía no se haya realizado el traslado.",
+            "A) Al presentar la oferta, antes de que se conozcan sus condiciones.",
+            "B) Después del dictamen, aunque la operación no se formalice.",
             "C) Una vez realizado el traslado de derechos.",
-            "D) Después de que se obtiene la posesión y el proceso de recuperación ya terminó."
+            "D) Solo al recibir la posesión física, al terminar todos los trámites."
         ],
         "C"
     ],
@@ -912,10 +912,10 @@ const questions = [
     [
         "¿Cuál es el papel principal del asesor comercial durante este proceso?",
         [
-            "A) Explicar el modelo, presentar información y resolver personalmente las consecuencias jurídicas del expediente.",
+            "A) Interpretar el expediente judicial y dictaminar por cuenta propia.",
             "B) Explicar el modelo, presentar información verificada, perfilar al cliente y conducirlo al siguiente paso comercial.",
-            "C) Explicar el modelo, perfilar al cliente y dirigir los trámites judiciales después del traslado.",
-            "D) Presentar información del activo, perfilar al cliente y aprobar la oferta por cuenta del banco."
+            "C) Representar al comprador en el juicio hasta recibir posesión.",
+            "D) Autorizar la oferta en nombre del banco y fijar sus condiciones."
         ],
         "B"
     ],
@@ -924,10 +924,10 @@ const questions = [
     [
         "¿Cuándo debe canalizarse una consulta al área jurídica?",
         [
-            "A) Cuando el cliente pregunta el precio o la zona, aunque no haya una duda sobre documentos o litigios.",
-            "B) Cuando el prospecto pide una cita para conocer el modelo comercial, aunque no solicite una interpretación legal.",
+            "A) Cuando se solicita una ficha y el asesor conoce su ubicación.",
+            "B) Cuando se pregunta por el presupuesto disponible en una zona.",
             "C) Cuando la respuesta requiere interpretación legal, revisión de consecuencias jurídicas, gravámenes, litigios, situación registral o garantías dependientes del proceso.",
-            "D) Cuando el cliente pregunta cómo presentar una oferta, aunque no pida revisar consecuencias jurídicas."
+            "D) Cuando el prospecto pide una cita para conocer el modelo general."
         ],
         "C"
     ]
@@ -951,7 +951,7 @@ $("examForm").addEventListener("submit",e=>{e.preventDefault();sendExam(false);}
 /* =====================================================
    CALIFICACIÓN Y GUARDADO EN FIREBASE
    ===================================================== */
-async function sendExam(auto){if(sent)return;const respuestas=[];let aciertos=0,faltan=0;questions.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i+1}"]:checked`);const r=c?c.value:"";if(!r)faltan++;const ok=r===q[2];if(ok)aciertos++;respuestas.push({numero:i+1,respuesta:r,correcta:q[2],acierto:ok});});if(!auto&&faltan>0){$("status").className="error";$("status").textContent=`Faltan ${faltan} preguntas por responder.`;return;}sent=true;clearInterval(timer);$("submitBtn").disabled=true;$("status").textContent=auto?"Tiempo terminado. Enviando...":"Enviando...";const score=Math.round((aciertos/50)*100);const payload={examen:"Remates Bancarios",nombreCompleto:$("nombre").value.trim(),telefono:$("telefono").value.trim(),respuestas,aciertos,totalEvaluables:50,calificacionPorcentaje:score,tiempoUsadoSegundos:TOTAL_SECONDS-Math.max(0,remaining),envioAutomaticoPorTiempo:auto,inicioLocal:startedAt?startedAt.toISOString():null,fechaEnvio:serverTimestamp()};try{await addDoc(collection(db,"resultadosExamen"),payload);$("exam").style.display="none";$("result").style.display="block";$("scoreText").textContent=`${score}%`;$("resultDetail").textContent=`${aciertos} de 50 respuestas correctas.`;window.scrollTo({top:0,behavior:"smooth"});}catch(err){console.error(err);sent=false;$("submitBtn").disabled=false;$("status").className="error";$("status").textContent="No se pudo enviar. Revisa tu conexión e inténtalo nuevamente.";if(remaining>0)timer=setInterval(tick,1000);}}
+async function sendExam(auto){if(sent)return;const respuestas=[];let aciertos=0,faltan=0;questions.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i+1}"]:checked`);const r=c?c.value:"";if(!r)faltan++;const ok=r===q[2];if(ok)aciertos++;respuestas.push({numero:i+1,respuesta:r,correcta:q[2],acierto:ok});});if(!auto&&faltan>0){$("status").className="error";$("status").textContent=`Faltan ${faltan} preguntas por responder.`;return;}sent=true;clearInterval(timer);$("submitBtn").disabled=true;$("status").textContent=auto?"Tiempo terminado. Enviando...":"Enviando...";const score=Math.round((aciertos/50)*100);const payload={examen:"Remates Bancarios — versión 2",nombreCompleto:$("nombre").value.trim(),telefono:$("telefono").value.trim(),respuestas,aciertos,totalEvaluables:50,calificacionPorcentaje:score,tiempoUsadoSegundos:TOTAL_SECONDS-Math.max(0,remaining),envioAutomaticoPorTiempo:auto,inicioLocal:startedAt?startedAt.toISOString():null,fechaEnvio:serverTimestamp()};try{await addDoc(collection(db,"resultadosExamen"),payload);$("exam").style.display="none";$("result").style.display="block";$("scoreText").textContent=`${score}%`;$("resultDetail").textContent=`${aciertos} de 50 respuestas correctas.`;window.scrollTo({top:0,behavior:"smooth"});}catch(err){console.error(err);sent=false;$("submitBtn").disabled=false;$("status").className="error";$("status").textContent="No se pudo enviar. Revisa tu conexión e inténtalo nuevamente.";if(remaining>0)timer=setInterval(tick,1000);}}
 </script>
 </body>
 </html>
