@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación — Remates Bancarios</title>
+<style>
+/* =====================================================
+   ESTILOS GENERALES
+   ===================================================== */
+:root {
+    --navy:#061b43;
+    --navy2:#082b66;
+    --blue:#0b55d4;
+    --cyan:#42d8ff;
+    --white:#fff;
+    --text:#10213d;
+    --muted:#66758e;
+    --danger:#d43b3b;
+    --ok:#0b8a63
+}
+
+
+* {
+    box-sizing:border-box
+}
+
+ body {
+    margin:0;
+    font-family:Arial,
+Helvetica,
+sans-serif;
+    background:#f4f8fc;
+    color:var(--text)
+}
+
+
+.hero {
+    background:linear-gradient(120deg,
+var(--navy),
+var(--navy2));
+    color:white;
+    padding:28px 24px;
+    border-bottom:1px solid rgba(66,216,255,
+.35)
+}
+
+
+.hero-inner {
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:24px
+}
+
+ .logo {
+    width:120px;
+    max-height:85px;
+    object-fit:contain;
+    background:white;
+    border-radius:14px;
+    padding:8px
+}
+
+
+.kicker {
+    color:var(--cyan);
+    font-weight:800;
+    letter-spacing:3px;
+    font-size:13px;
+    text-transform:uppercase
+}
+
+ h1 {
+    font-size:clamp(30px,5vw,52px);
+    margin:8px 0 5px;
+    line-height:1.05
+}
+
+
+.hero p {
+    margin:0;
+    color:#d7e5fb;
+    font-size:17px
+}
+
+ .wrap {
+    max-width:1000px;
+    margin:28px auto;
+    padding:0 18px 60px
+}
+
+
+.card,
+.question {
+    background:white;
+    border:1px solid #d8e7f6;
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(4,35,79,
+.07);
+    margin-bottom:20px
+}
+
+
+.grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px
+}
+
+ label.field {
+    display:block;
+    font-weight:700
+}
+
+
+input[type=text],
+input[type=tel] {
+    width:100%;
+    margin-top:8px;
+    border:1px solid #bcd3eb;
+    border-radius:10px;
+    padding:13px;
+    font:inherit;
+    outline:none
+}
+
+
+button {
+    border:0;
+    border-radius:11px;
+    padding:14px 22px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    background:var(--blue);
+    color:white
+}
+
+
+button:disabled {
+    opacity:.55;
+    cursor:not-allowed
+}
+
+ #exam {
+    display:none
+}
+
+ .exam-top {
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(244,248,252,
+.96);
+    padding:10px 0
+}
+
+
+.timer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--navy);
+    color:white;
+    border-radius:14px;
+    padding:13px 18px;
+    border:1px solid #1c70c8
+}
+
+
+.timer strong {
+    font-size:26px;
+    color:var(--cyan);
+    font-variant-numeric:tabular-nums
+}
+
+ .question h3 {
+    margin:0 0 16px;
+    font-size:18px;
+    line-height:1.4
+}
+
+
+.option {
+    display:block;
+    border:1px solid #d8e4f0;
+    border-radius:11px;
+    padding:12px 13px;
+    margin:9px 0;
+    cursor:pointer
+}
+
+ .option:hover {
+    border-color:#7eb8ee;
+    background:#f7fbff
+}
+
+
+.option input {
+    margin-right:9px
+}
+
+ .note {
+    color:var(--muted);
+    font-size:14px
+}
+
+ .actions {
+    display:flex;
+    gap:12px;
+    justify-content:flex-end;
+    align-items:center;
+    margin-top:20px
+}
+
+
+.error {
+    color:var(--danger);
+    font-weight:700
+}
+
+ .result {
+    display:none;
+    text-align:center
+}
+
+ .result h2 {
+    font-size:32px;
+    color:var(--navy)
+}
+
+ .score {
+    font-size:52px;
+    font-weight:900;
+    color:var(--blue)
+}
+
+
+@media(max-width:700px) {
+    .hero-inner {
+    align-items:flex-start;
+    flex-direction:column
+}
+
+.logo {
+    width:105px
+}
+
+.grid {
+    grid-template-columns:1fr
+}
+
+.card,
+.question {
+    padding:18px
+}
+
+
+}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="hero-inner">
+<img src="dgazul.png" class="logo" alt="DG">
+<div>
+<div class="kicker">Capacitación inmobiliaria</div>
+<h1>Evaluación — Remates Bancarios</h1>
+<p>50 preguntas · Tiempo máximo: 60 minutos</p>
+</div>
+</div>
+</header>
+<main class="wrap">
+<section id="startCard" class="card">
+<h2>Datos del asesor</h2>
+<p class="note">Escribe tus datos antes de iniciar. El cronómetro comenzará al pulsar “Iniciar examen”.</p>
+<div class="grid">
+<label class="field">Nombre completo<input id="nombre" type="text" maxlength="100">
+</label>
+<label class="field">Número de teléfono<input id="telefono" type="tel" maxlength="20">
+</label>
+</div>
+<div class="actions">
+<button id="startBtn">Iniciar examen</button>
+</div>
+<div id="startError" class="error">
+</div>
+</section>
+<section id="exam">
+<div class="exam-top">
+<div class="timer">
+<span>Tiempo restante</span>
+<strong id="clock">60:00</strong>
+</div>
+</div>
+<form id="examForm">
+<div id="questions">
+</div>
+<div class="card">
+<p class="note">Revisa tus respuestas antes de enviar.</p>
+<div class="actions">
+<span id="status">
+</span>
+<button id="submitBtn" type="submit">Enviar examen</button>
+</div>
+</div>
+</form>
+</section>
+<section id="result" class="card result">
+<h2>Examen enviado correctamente</h2>
+<p>Tu resultado fue registrado.</p>
+<div class="score" id="scoreText">
+</div>
+<p id="resultDetail">
+</p>
+</section>
+</main>
+<script type="module">
+/* =====================================================
+   FIREBASE Y CONFIGURACIÓN
+   ===================================================== */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyAor68CdZrjqOb5Ud8aoaAnIokeCtRuRS8",authDomain:"examen-catalogo.firebaseapp.com",projectId:"examen-catalogo",storageBucket:"examen-catalogo.firebasestorage.app",messagingSenderId:"1019239535020",appId:"1:1019239535020:web:33dffcb9b69119640f6a09"};
+const db=getFirestore(initializeApp(firebaseConfig));
+
+/* =====================================================
+   PREGUNTAS DEL EXAMEN
+   Aquí puedes modificar preguntas, opciones y respuesta.
+   ===================================================== */
+const questions = [
+    // PREGUNTA 1
+    [
+        "¿Cómo se les llama comercialmente a las propiedades que el banco saca a la venta a un precio reducido?",
+        [
+            "A) Propiedades hipotecadas.",
+            "B) Remates bancarios.",
+            "C) Propiedades regularizadas.",
+            "D) Propiedades recuperadas."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 2
+    [
+        "¿Con qué tipo de recursos debe contar principalmente el cliente para adquirir este tipo de oportunidades?",
+        [
+            "A) Crédito Infonavit.",
+            "B) Crédito hipotecario preautorizado.",
+            "C) Recursos propios.",
+            "D) Arrendamiento financiero."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 3
+    [
+        "¿Qué significa que exista una sentencia firme?",
+        [
+            "A) Que apenas inicia la demanda.",
+            "B) Que el inmueble ya está necesariamente desocupado.",
+            "C) Que la resolución ya no admite los recursos ordinarios correspondientes.",
+            "D) Que ya se firmó la escritura."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 4
+    [
+        "¿Por qué una propiedad de recuperación bancaria puede ofrecerse por debajo de un valor comercial tradicional?",
+        [
+            "A) Por la etapa jurídica, el tiempo de espera y los procedimientos pendientes.",
+            "B) Porque todas están dañadas.",
+            "C) Porque el asesor fija libremente el precio.",
+            "D) Porque siempre se entregan sin documentos."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 5
+    [
+        "En la mayoría de estas operaciones, ¿cómo puede revisarse físicamente la propiedad antes de avanzar?",
+        [
+            "A) Siempre por dentro.",
+            "B) Principalmente por fuera.",
+            "C) Únicamente mediante avalúo interior.",
+            "D) Siempre mediante visita con el banco."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 6
+    [
+        "Dentro de un procedimiento judicial, ¿qué es el emplazamiento?",
+        [
+            "A) La venta de la propiedad.",
+            "B) La notificación legal al demandado.",
+            "C) La firma de la escritura.",
+            "D) La entrega de posesión."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 7
+    [
+        "¿Por qué es importante saber si el cliente busca una propiedad para vivir o para invertir?",
+        [
+            "A) Porque permite perfilar mejor las opciones; para inversión puede considerar más zonas y para vivir normalmente busca ubicaciones específicas.",
+            "B) Porque únicamente los inversionistas pueden comprar.",
+            "C) Porque cambia automáticamente el precio del banco.",
+            "D) Porque determina si puede utilizar crédito hipotecario."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 8
+    [
+        "Una vez realizado el traslado de derechos, ¿quién continúa con los trámites de recuperación de la propiedad?",
+        [
+            "A) El asesor comercial.",
+            "B) El banco obligatoriamente.",
+            "C) El cliente y el abogado elegido por él.",
+            "D) El notario como responsable del juicio."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 9
+    [
+        "Si un cliente pregunta exactamente cuánto tardará una operación, ¿qué debe explicarse?",
+        [
+            "A) Que siempre tarda seis meses.",
+            "B) Que depende de la etapa jurídica, los procedimientos pendientes y de cómo continúe el proceso su abogado.",
+            "C) Que siempre tarda catorce meses.",
+            "D) Que el asesor puede garantizar una fecha."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 10
+    [
+        "¿Qué puede ocurrir si no se localiza al demandado para realizar el emplazamiento?",
+        [
+            "A) Pueden generarse demoras mientras se realizan búsquedas u otras formas legales de notificación.",
+            "B) El juicio termina automáticamente.",
+            "C) La propiedad pasa inmediatamente a posesión del comprador.",
+            "D) Se elimina la deuda."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 11
+    [
+        "¿Qué puede adquirir un cliente dependiendo de la etapa jurídica de la operación?",
+        [
+            "A) Únicamente una escritura terminada.",
+            "B) Derechos de cobro, derechos litigiosos, derechos adjudicatarios o, según el caso, una propiedad en regularización o propiedad.",
+            "C) Únicamente la posesión física.",
+            "D) Siempre una vivienda lista para habitar."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 12
+    [
+        "¿Cuál es la finalidad práctica del dictamen dentro de la operación?",
+        [
+            "A) Garantizar la fecha de entrega.",
+            "B) Verificar si  la propiedad es viables para continuar.",
+            "C) Sustituir al abogado del cliente.",
+            "D) Autorizar un crédito hipotecario."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 13
+    [
+        "¿Qué sucede en la etapa de pruebas de un juicio?",
+        [
+            "A) Se presentan y desahogan los elementos probatorios correspondientes al procedimiento.",
+            "B) Se entrega automáticamente la posesión.",
+            "C) Se firma siempre la escritura.",
+            "D) Se fija la comisión del asesor."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 14
+    [
+        "Si un cliente pregunta “¿qué estoy comprando exactamente?”, ¿cuál es la respuesta adecuada?",
+        [
+            "A) Siempre una casa escriturada.",
+            "B) Depende de la etapa: pueden ser derechos litigiosos, derechos de cobro, derechos adjudicatarios o, según el caso, una propiedad.",
+            "C) Siempre la posesión inmediata.",
+            "D) Un crédito bancario."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 15
+    [
+        "Antes de que un cliente avance con una propiedad, ¿qué información debe revisarse?",
+        [
+            "A) Solo las fotografías.",
+            "B) La información disponible sobre la situación jurídica, precio,dirección, documentos y condiciones específicas.",
+            "C) Únicamente la colonia.",
+            "D) Solo el valor comercial estimado."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 16
+    [
+        "¿Cuál es el origen habitual de muchas propiedades de recuperación bancaria?",
+        [
+            "A) El propietario decide rentarlas.",
+            "B) Un crédito deja de pagarse y el acreedor inicia el proceso correspondiente para recuperar lo adeudado.",
+            "C) El banco construye viviendas para venderlas.",
+            "D) El asesor compra previamente el inmueble."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 17
+    [
+        "Si el cliente pregunta por gravámenes, consecuencias jurídicas o interpretación legal de documentos, ¿qué debe hacer el asesor?",
+        [
+            "A) Dar su interpretación personal.",
+            "B) Garantizar que no existe ningún problema.",
+            "C) Canalizar la consulta al área jurídica.",
+            "D) Pedir al cliente que decida sin revisión."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 18
+    [
+        "En un crédito hipotecario, ¿qué función tiene originalmente el inmueble?",
+        [
+            "A) Sirve como garantía del crédito.",
+            "B) Sustituye el contrato de crédito.",
+            "C) Elimina la obligación de pago.",
+            "D) Funciona como comisión del banco."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 19
+    [
+        "¿Por qué una etapa jurídica más temprana puede representar un mayor descuento?",
+        [
+            "A) Porque pueden quedar más tiempo de espera y procedimientos pendientes.",
+            "B) Porque ya existe posesión inmediata.",
+            "C) Porque no existen trámites pendientes.",
+            "D) Porque el asesor puede cambiar el precio."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 20
+    [
+        "¿Cuál es normalmente el primer paso de la ruta judicial de recuperación?",
+        [
+            "A) Adjudicación.",
+            "B) Demanda.",
+            "C) Escritura.",
+            "D) Posesión."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 21
+    [
+        "Si un cliente necesita mudarse inmediatamente, ¿qué debe explicársele sobre estas operaciones?",
+        [
+            "A) Que todas tienen entrega inmediata.",
+            "B) Que no son operaciones de entrega inmediata; en algunos casos se manejan referencias aproximadas de 6 a 14 meses, pero el tiempo real depende del expediente y del proceso.",
+            "C) Que puede ocupar el inmueble al pagar.",
+            "D) Que el asesor puede garantizarle una fecha."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 22
+    [
+        "¿Qué representan los derechos de crédito?",
+        [
+            "A) El derecho automático a ocupar el inmueble.",
+            "B) Derechos relacionados con el cobro de una deuda.",
+            "C) Una escritura definitiva.",
+            "D) Una autorización para rentar la propiedad."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 23
+    [
+        "¿Qué puntos deben aclararse desde el inicio al prospecto?",
+        [
+            "A) Que siempre podrá visitar por dentro y recibir inmediatamente.",
+            "B) Que normalmente se revisa por fuera, no es una entrega inmediata y la operación requiere recursos propios.",
+            "C) Que puede usar cualquier crédito hipotecario.",
+            "D) Que todas las propiedades están desocupadas."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 24
+    [
+        "¿Qué significa la ejecución de una sentencia?",
+        [
+            "A) Volver a presentar la demanda.",
+            "B) Iniciar la etapa de pruebas.",
+            "C) Llevar a efecto lo ordenado en la resolución judicial.",
+            "D) Publicar la propiedad."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 25
+    [
+        "¿Cuál es la diferencia principal entre una sentencia y una sentencia firme?",
+        [
+            "A) La sentencia es una resolución del juez; la sentencia firme ya no admite los recursos ordinarios correspondientes.",
+            "B) La sentencia firme siempre significa posesión física.",
+            "C) La sentencia solo existe después de la escritura.",
+            "D) No existe ninguna diferencia."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 26
+    [
+        "Cuando un cliente muestra interés real en una propiedad, ¿cuál es el siguiente paso antes de formalizar la operación?",
+        [
+            "A) Entregarle las llaves.",
+            "B) Revisar la información disponible y elaborar el dictamen correspondiente.",
+            "C) Pedirle que contrate un crédito hipotecario.",
+            "D) Publicar nuevamente la propiedad."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 27
+    [
+        "¿Qué son los derechos litigiosos?",
+        [
+            "A) Derechos sobre una propiedad sin ningún procedimiento.",
+            "B) Derechos vinculados a un procedimiento judicial existente.",
+            "C) Una escritura inscrita automáticamente.",
+            "D) Una garantía de posesión inmediata."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 28
+    [
+        "¿Que una propiedad se encuentre adjudicada significa que ya puede ser habitada?",
+        [
+            "A) Sí, siempre.",
+            "B) No necesariamente; debe revisarse la situación de posesión específica del inmueble.",
+            "C) Sí, si aparece en el catálogo.",
+            "D) Sí, si el cliente tiene recursos propios."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 29
+    [
+        "¿Hasta qué momento acompaña la empresa la gestión de la operación?",
+        [
+            "A) Solo hasta mostrar el catálogo.",
+            "B) Únicamente hasta elaborar el dictamen.",
+            "C) Hasta el traslado de derechos, de acuerdo con la naturaleza de la operación.",
+            "D) Hasta que el cliente venda nuevamente la propiedad."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 30
+    [
+        "¿Cuál es una diferencia importante entre una compra inmobiliaria tradicional y una operación de recuperación bancaria?",
+        [
+            "A) Pueden variar los tiempos de entrega, la forma de pago y lo que jurídicamente se adquiere; en recuperación pueden transmitirse derechos según la etapa.",
+            "B) En recuperación siempre se entrega inmediatamente.",
+            "C) En una compra tradicional nunca existe escritura.",
+            "D) No existe ninguna diferencia."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 31
+    [
+        "Además del precio de adquisición, ¿qué otros conceptos pueden existir en una operación?",
+        [
+            "A) Impuestos, gastos notariales, servicios, mantenimiento, predial o regularización, según corresponda.",
+            "B) Únicamente la comisión del asesor.",
+            "C) Ningún gasto adicional en ningún caso.",
+            "D) Solamente publicidad."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 32
+    [
+        "Si un prospecto pregunta “¿por qué está tan barata?”, ¿qué explicación corresponde?",
+        [
+            "A) Porque seguramente está abandonada.",
+            "B) Porque el precio puede relacionarse con la etapa jurídica, el tiempo de espera y las condiciones específicas de la operación.",
+            "C) Porque el asesor decidió bajar el precio.",
+            "D) Porque no existen documentos."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 33
+    [
+        "Si una duda requiere determinar la validez jurídica de un documento, ¿qué debe hacer el asesor?",
+        [
+            "A) Interpretarlo por su cuenta.",
+            "B) Dar una garantía verbal.",
+            "C) Canalizarla al área jurídica.",
+            "D) Ignorar la pregunta."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 34
+    [
+        "¿Qué puede provocar que la etapa de pruebas tarde más?",
+        [
+            "A) Que el cliente pregunte por el precio.",
+            "B) Pruebas complejas, peritajes u otras actuaciones necesarias dentro del procedimiento.",
+            "C) Que el asesor comparta el catálogo.",
+            "D) Que exista un folio de propiedad."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 35
+    [
+        "¿Cómo debe explicarse el modelo general al prospecto?",
+        [
+            "A) Como oportunidades provenientes de bancos, administradoras o titulares de derechos, que pueden encontrarse en distintas etapas y tener diferentes tiempos de recuperación.",
+            "B) Como casas nuevas de entrega inmediata.",
+            "C) Como créditos hipotecarios con descuento.",
+            "D) Como propiedades que siempre están desocupadas."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 36
+    [
+        "Una vez que el cliente decide avanzar con la compra y la operación es viable, ¿qué acción corresponde?",
+        [
+            "A) Presentar la oferta al banco o entidad correspondiente y dar seguimiento a la operación.",
+            "B) Entregar la posesión.",
+            "C) Firmar una escritura sin revisión.",
+            "D) Solicitar un crédito hipotecario."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 37
+    [
+        "¿Qué información ayuda a perfilar correctamente a un prospecto?",
+        [
+            "A) Zona de interés, presupuesto, si busca vivir o invertir, experiencia previa, plazo esperado y disponibilidad de recursos propios.",
+            "B) Únicamente su nombre.",
+            "C) Solo la colonia donde vive actualmente.",
+            "D) Únicamente su edad."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 38
+    [
+        "Una vez que existe sentencia firme, ¿el deudor puede impugnar el juicio mediante los recursos ordinarios correspondientes?",
+        [
+            "A) Sí, indefinidamente.",
+            "B) No; una sentencia firme ya no admite los recursos ordinarios correspondientes.",
+            "C) Sí, siempre que el asesor lo autorice.",
+            "D) Solo si cambia el precio de la propiedad."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 39
+    [
+        "¿Puede adquirirse un remate bancario mediante un crédito hipotecario utilizando la misma propiedad como garantía?",
+        [
+            "A) Sí, en todos los casos.",
+            "B) Sí, si el banco lo autoriza verbalmente.",
+            "C) No; para estas operaciones se requieren recursos propios.",
+            "D) Sí, después de elegir la propiedad."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 40
+    [
+        "Antes de recomendar avanzar con una operación, ¿qué debe revisarse?",
+        [
+            "A) La información disponible del juicio, de la propiedad y de las condiciones de la operación para valorar su viabilidad.",
+            "B) Solo una fotografía exterior.",
+            "C) Únicamente el precio publicado.",
+            "D) Solo la opinión del asesor."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 41
+    [
+        "Dentro de la ruta judicial explicada en el curso, ¿qué etapa sigue después del emplazamiento?",
+        [
+            "A) Escritura.",
+            "B) Pruebas.",
+            "C) Posesión.",
+            "D) Venta inmediata."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 42
+    [
+        "¿“Derechos de cobro”, “derechos litigiosos”, “adjudicación”, “regularizar” y “propiedad” significan exactamente lo mismo?",
+        [
+            "A) No; describen situaciones o etapas distintas y debe identificarse qué corresponde a cada operación.",
+            "B) Sí, todos significan propiedad escriturada.",
+            "C) Sí, todos significan posesión inmediata.",
+            "D) Sí, únicamente cambia el nombre comercial."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 43
+    [
+        "Después del traslado de derechos, ¿qué seguimiento contempla la empresa?",
+        [
+            "A) Dos asesorías de seguimiento para revisar avances, dudas y orientación.",
+            "B) Representación judicial ilimitada.",
+            "C) Pago de todos los gastos legales.",
+            "D) Entrega garantizada de la posesión."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 44
+    [
+        "Si un cliente pregunta “¿cómo sé que no es fraude?”, ¿cómo debe responder el asesor?",
+        [
+            "A) Pidiéndole que confíe sin revisar documentos.",
+            "B) Explicando el proceso con transparencia y señalando que la documentación disponible puede revisarse antes de avanzar.",
+            "C) Garantizando verbalmente que nunca existe riesgo.",
+            "D) Evitando hablar del proceso."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 45
+    [
+        "¿Qué relación puede existir entre la etapa jurídica y el descuento de una propiedad?",
+        [
+            "A) En etapas más tempranas puede existir un mayor descuento porque quedan más tiempo y procedimientos pendientes.",
+            "B) Mientras más temprana la etapa, menor descuento obligatoriamente.",
+            "C) La etapa jurídica nunca tiene relación con el precio.",
+            "D) La etapa jurídica determina una entrega inmediata."
+        ],
+        "A"
+    ],
+
+    // PREGUNTA 46
+    [
+        "Si el cliente pregunta qué garantía tiene sobre una operación, ¿qué debe evitar el asesor?",
+        [
+            "A) Explicar la documentación disponible.",
+            "B) Inventar garantías; los pagos y formalización deben seguir las instrucciones y documentos del banco, administradora o parte correspondiente.",
+            "C) Canalizar dudas legales.",
+            "D) Revisar las condiciones específicas."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 47
+    [
+        "¿Cuál describe mejor el flujo comercial de una operación?",
+        [
+            "A) Publicar → cobrar → entregar llaves.",
+            "B) Contactar → perfilar → explicar → seleccionar propiedad → verificar → formalizar → gestionar traslado de derechos → seguimiento.",
+            "C) Elegir propiedad → solicitar hipoteca → habitar.",
+            "D) Firmar escritura → revisar documentos → presentar oferta."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 48
+    [
+        "¿En qué momento el abogado elegido por el cliente continúa con el proceso de recuperación de la propiedad?",
+        [
+            "A) Antes de que el cliente elija una propiedad.",
+            "B) Antes de presentar la oferta.",
+            "C) Una vez realizado el traslado de derechos.",
+            "D) Únicamente cuando el asesor termina la capacitación."
+        ],
+        "C"
+    ],
+
+    // PREGUNTA 49
+    [
+        "¿Cuál es el papel principal del asesor comercial durante este proceso?",
+        [
+            "A) Resolver personalmente cualquier cuestión jurídica.",
+            "B) Explicar el modelo, presentar información verificada, perfilar al cliente y conducirlo al siguiente paso comercial.",
+            "C) Garantizar fechas de recuperación.",
+            "D) Sustituir al abogado del cliente."
+        ],
+        "B"
+    ],
+
+    // PREGUNTA 50
+    [
+        "¿Cuándo debe canalizarse una consulta al área jurídica?",
+        [
+            "A) Cuando el cliente pregunta qué zona tiene disponible.",
+            "B) Cuando solicita el catálogo.",
+            "C) Cuando la respuesta requiere interpretación legal, revisión de consecuencias jurídicas, gravámenes, litigios, situación registral o garantías dependientes del proceso.",
+            "D) Cuando pregunta el precio publicado."
+        ],
+        "C"
+    ]
+
+];
+const qbox=document.getElementById("questions");
+questions.forEach((q,i)=>{const d=document.createElement("div");d.className="question";d.innerHTML=`<h3>${i+1}. ${q[0]}</h3>`+q[1].map(o=>`<label class="option">
+<input type="radio" name="q${i+1}" value="${o.charAt(0)}">${o}</label>`).join("");qbox.appendChild(d);});
+
+
+/* =====================================================
+   CRONÓMETRO — 60 MINUTOS
+   ===================================================== */
+const TOTAL_SECONDS=60*60; let remaining=TOTAL_SECONDS,timer=null,startedAt=null,sent=false;
+const $=id=>document.getElementById(id); const formatTime=s=>`${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
+function tick(){remaining--; $("clock").textContent=formatTime(Math.max(0,remaining));if(remaining<=0){clearInterval(timer);sendExam(true);}}
+$("startBtn").addEventListener("click",()=>{const n=$("nombre").value.trim(),t=$("telefono").value.trim();$("startError").textContent="";if(n.length<3||t.length<7){$("startError").textContent="Escribe tu nombre completo y un número de teléfono válido.";return;}$("startCard").style.display="none";$("exam").style.display="block";startedAt=new Date();remaining=TOTAL_SECONDS;$("clock").textContent=formatTime(remaining);timer=setInterval(tick,1000);window.scrollTo({top:0,behavior:"smooth"});});
+$("examForm").addEventListener("submit",e=>{e.preventDefault();sendExam(false);});
+
+
+/* =====================================================
+   CALIFICACIÓN Y GUARDADO EN FIREBASE
+   ===================================================== */
+async function sendExam(auto){if(sent)return;const respuestas=[];let aciertos=0,faltan=0;questions.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i+1}"]:checked`);const r=c?c.value:"";if(!r)faltan++;const ok=r===q[2];if(ok)aciertos++;respuestas.push({numero:i+1,respuesta:r,correcta:q[2],acierto:ok});});if(!auto&&faltan>0){$("status").className="error";$("status").textContent=`Faltan ${faltan} preguntas por responder.`;return;}sent=true;clearInterval(timer);$("submitBtn").disabled=true;$("status").textContent=auto?"Tiempo terminado. Enviando...":"Enviando...";const score=Math.round((aciertos/50)*100);const payload={examen:"Remates Bancarios",nombreCompleto:$("nombre").value.trim(),telefono:$("telefono").value.trim(),respuestas,aciertos,totalEvaluables:50,calificacionPorcentaje:score,tiempoUsadoSegundos:TOTAL_SECONDS-Math.max(0,remaining),envioAutomaticoPorTiempo:auto,inicioLocal:startedAt?startedAt.toISOString():null,fechaEnvio:serverTimestamp()};try{await addDoc(collection(db,"resultadosExamen"),payload);$("exam").style.display="none";$("result").style.display="block";$("scoreText").textContent=`${score}%`;$("resultDetail").textContent=`${aciertos} de 50 respuestas correctas.`;window.scrollTo({top:0,behavior:"smooth"});}catch(err){console.error(err);sent=false;$("submitBtn").disabled=false;$("status").className="error";$("status").textContent="No se pudo enviar. Revisa tu conexión e inténtalo nuevamente.";if(remaining>0)timer=setInterval(tick,1000);}}
+</script>
+</body>
+</html>
